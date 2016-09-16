@@ -85,6 +85,7 @@
     <Content Include="app\templates\app\layout.html" />
     <Content Include="app\templates\app\login.html" />
     <Content Include="app\templates\app\loginpartial.html" />
+    <None Include="rsurvey - FTP.pubxml" />
     <None Include="rsurvey - Web Deploy.pubxml" />
   </ItemGroup>
   <ItemGroup>
