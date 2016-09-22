@@ -1,0 +1,44 @@
+﻿{% extends "app/layout.html" %}
+
+{% block content %}
+
+<br />
+
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h3 class="panel-title">{{ question.question_text }}</h3>
+  </div>
+  <div class="panel-body">
+    {{ question.desc_text }}
+  </div>
+</div>
+
+<h2>Current Votes:</h2>
+<ul class="list-group">
+    {% if question.choice_set.all %}
+        {% for choice  in question.choice_set.all %}
+              <li class="list-group-item">
+                <span class="badge">{{choice.votes}}</span>
+                {{ choice.choice_text }}
+               </li>
+        {% endfor %}
+        {% else %}
+              <li class="list-group-item">
+                 No Choices
+                </li>
+    {% endif %}
+
+</ul>
+
+<h2>Current Response:</h2>
+<div class="list-group">
+    {% if question.choice_set.all %}
+        {% for choice  in question.choice_set.all %}
+            <a href="/{{question.id}}/vote/{{ choice.id }}" class="list-group-item" >{{ choice.choice_text }}</a>
+        {% endfor %}
+        {% else %}
+            <a href="#" class="list-group-item" >No Responses Available</a>
+    {% endif %}
+</div>
+
+{% endblock %}
