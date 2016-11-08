@@ -27,3 +27,10 @@ class Survey(models.Model):
     first_qid = models.ForeignKey(Question,null = True,blank=True)
     def __str__(self):
         return self.survey_name
+
+class UserResponses(models.Model):
+    surveyid = models.ForeignKey(Survey, on_delete=models.CASCADE)
+    qid = models.ForeignKey(Question, on_delete=models.CASCADE)
+    response = models.TextField()
+    userid = models.TextField()
+    

@@ -1,4 +1,4 @@
-"""
+﻿"""
 Definition of views.
 """
 
@@ -8,7 +8,7 @@ from django.template import RequestContext
 from datetime import datetime
 from graphos.sources.model import ModelDataSource
 from graphos.renderers import gchart
-from .models import Question, Choice, Survey
+from .models import Question, Choice, Survey, UserResponses
 
 def detail(request, question_id):
     #If the item being passed is a survey, then get the
