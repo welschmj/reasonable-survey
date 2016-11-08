@@ -5,7 +5,7 @@
 <div class="jumbotron">
     <h1>Responsive Surveys</h1>
     <p class="lead">Responsive Surveys allow your organization to increase the efficency of necessary business processes, including onboarding and approval workflows. Additionally, Responsive Surveys can be used for amusement.</p>
-    <p><a href="https://www.djangoproject.com/" class="btn btn-primary btn-large">Learn more &raquo;</a></p>
+    <p><a href="/admin" class="btn btn-primary btn-large">Go to Administration Page &raquo;</a></p>
 </div>
 
 <div class="list-group">
@@ -13,8 +13,8 @@
     Recent Polls
   </a>
     {% if latest_question_list %}
-        {% for question in latest_question_list %}
-            <a href="/{{ question.id }}/" class="list-group-item" >{{ question.question_text }}</a>
+        {% for survey in latest_question_list %}
+            <a href="/{{ survey.id }}/" class="list-group-item" >{{ survey.survey_name }}</a>
         {% endfor %}
         {% else %}
             <p>No polls are available.</p>

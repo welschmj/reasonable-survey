@@ -2,6 +2,11 @@
 
 {% block content %}
 
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript">
+    google.load("visualization", "1", {packages:["corechart"]});
+</script>
+
 <br />
 
 <div class="panel panel-primary">
@@ -13,24 +18,8 @@
   </div>
 </div>
 
-<h2>Current Votes:</h2>
-<ul class="list-group">
-    {% if question.choice_set.all %}
-        {% for choice  in question.choice_set.all %}
-              <li class="list-group-item">
-                <span class="badge">{{choice.votes}}</span>
-                {{ choice.choice_text }}
-               </li>
-        {% endfor %}
-        {% else %}
-              <li class="list-group-item">
-                 No Choices
-                </li>
-    {% endif %}
 
-</ul>
-
-<h2>Current Response:</h2>
+<h2>Choose a Response:</h2>
 <div class="list-group">
     {% if question.choice_set.all %}
         {% for choice  in question.choice_set.all %}
@@ -41,4 +30,7 @@
     {% endif %}
 </div>
 
+<div id="container">
+  {{ chart.as_html }}
+</div>
 {% endblock %}

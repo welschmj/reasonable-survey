@@ -4,7 +4,7 @@
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <Name>dstest7</Name>
     <RootNamespace>dstest7</RootNamespace>
-    <InterpreterId>{62e4c8eb-f5a9-4523-a272-54dede602e13}</InterpreterId>
+    <InterpreterId>{7fa3f837-08f7-4297-bea0-4d36ba3c4cd4}</InterpreterId>
     <InterpreterVersion>3.4</InterpreterVersion>
     <NameOfLastUsedPublishProfile>rsurvey - Web Deploy</NameOfLastUsedPublishProfile>
   </PropertyGroup>
@@ -99,11 +99,15 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Interpreter Include="env\">
-      <Id>{62e4c8eb-f5a9-4523-a272-54dede602e13}</Id>
+    <InterpreterReference Include="{2af0f10d-7135-4994-9156-5d01c9c11b7e}\3.4" />
+    <InterpreterReference Include="{2af0f10d-7135-4994-9156-5d01c9c11b7e}\3.5" />
+  </ItemGroup>
+  <ItemGroup>
+    <Interpreter Include="env2\">
+      <Id>{7fa3f837-08f7-4297-bea0-4d36ba3c4cd4}</Id>
       <BaseInterpreter>{2af0f10d-7135-4994-9156-5d01c9c11b7e}</BaseInterpreter>
       <Version>3.4</Version>
-      <Description>env (Python 3.4)</Description>
+      <Description>env2 (Python 3.4)</Description>
       <InterpreterPath>Scripts\python.exe</InterpreterPath>
       <WindowsInterpreterPath>Scripts\pythonw.exe</WindowsInterpreterPath>
       <LibraryPath>Lib\</LibraryPath>
