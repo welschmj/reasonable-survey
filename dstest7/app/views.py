@@ -8,7 +8,7 @@ from django.template import RequestContext
 from datetime import datetime
 from graphos.sources.model import ModelDataSource
 from graphos.renderers import gchart
-from .models import Question, Choice, Survey, UserResponses
+from .models import Question, Choice, Survey, Response
 
 def detail(request, question_id):
     #If the item being passed is a survey, then get the
@@ -40,7 +40,7 @@ def vote(request, question_id, ans_id):
     question = get_object_or_404(Question, pk=question_id)
     choice = question.choice_set.get(pk=ans_id)
     choice.votes = choice.votes + 1
-
+    res = Response.objects.create(surveyid=question.survey_id.pk,qid = question.pk,res = choice.choice_text,user = request.user.username)
     # goes to the question if it is defined by choice
     if choice.next_qid:
         next_q = choice.next_qid.id
@@ -51,6 +51,7 @@ def vote(request, question_id, ans_id):
     else:
         next_q = ""
 
+    res.save()
     choice.save()
     if next_q:
         return detail(request,next_q)
