@@ -252,4 +252,4 @@ ModelManifest.xml
 *.DS_Store
 
 # ignore the database file
-*.sqlite
+*.sqlite3
