@@ -28,6 +28,7 @@ urlpatterns = [
     url(r'^poll/$', app.views.home, name='home'),
     url(r'^contact$', app.views.contact, name='contact'),
     url(r'^about', app.views.about, name='about'),
+    url(r'^summary', app.views.summary, name='summary'),
     url(r'^login/$',
         django.contrib.auth.views.login,
         {

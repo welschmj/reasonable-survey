@@ -3,7 +3,7 @@ Definition of views.
 """
 
 from django.shortcuts import render, get_object_or_404
-from django.http import HttpRequest
+from django.http import HttpRequest, HttpResponse
 from django.template import RequestContext
 from datetime import datetime
 from graphos.sources.model import ModelDataSource
@@ -98,3 +98,39 @@ def about(request):
             'year':datetime.now().year,
         }
     )
+
+def summary(request):
+    allsurveys = Survey.objects.all()
+    graphs = []
+    surveynames = []
+    for survey in allsurveys:
+        surveynames.append(survey.survey_name)
+        allquestions = Question.objects.all().filter(survey_id=survey.id)
+        for question in allquestions:
+            choices = Choice.objects.filter(question = question.id)
+            allquestions = Question.objects.select_related().filter(survey_id=survey.id)
+            data_source = ModelDataSource(choices, fields=['choice_text', 'votes'])
+            chart = gchart.PieChart(data_source, options={'is3D': True,
+                'pieSliceText': 'value', 'title': question.question_text})
+            graphs.append((chart, survey.survey_name))
+    return render(request, 'app/summary.html', {'graphs': graphs})
+
+
+
+
+
+# def summary(request):
+#     allsurveys = Survey.objects.all()
+#     graphs = []
+#     for survey in allsurveys:
+#         allquestions = Question.objects.all().filter(survey_id=survey.id)
+#         # for question in allquestions:
+#             # choices = Choice.objects.filter(question = question.id)
+#             # allquestions = Question.objects.select_related().filter(survey_id=survey.id)
+#         choices = Choice.objects.select_related().filter(question_id = allquestions[0].id)
+#         data_source = ModelDataSource(choices, fields=['choice_text',
+#         'votes'])
+#         chart = gchart.PieChart(data_source, options={'is3D': True,
+#             'pieSliceText': 'value', 'title': survey.survey_name})
+#         graphs.append(chart)
+#     return render(request, 'app/summary.html', {'graphs': graphs})
