@@ -102,35 +102,31 @@ def about(request):
 def summary(request):
     allsurveys = Survey.objects.all()
     graphs = []
-    surveynames = []
     for survey in allsurveys:
-        surveynames.append(survey.survey_name)
         allquestions = Question.objects.all().filter(survey_id=survey.id)
         for question in allquestions:
             choices = Choice.objects.filter(question = question.id)
-            allquestions = Question.objects.select_related().filter(survey_id=survey.id)
             data_source = ModelDataSource(choices, fields=['choice_text', 'votes'])
-            chart = gchart.PieChart(data_source, options={'is3D': True,
-                'pieSliceText': 'value', 'title': question.question_text})
+            chart = gchart.PieChart(data_source,
+                    options={'is3D': True,
+                    'pieSliceText': 'value',
+                    'title': question.question_text})
             graphs.append((chart, survey.survey_name))
     return render(request, 'app/summary.html', {'graphs': graphs})
 
-
-
-
-
-# def summary(request):
-#     allsurveys = Survey.objects.all()
-#     graphs = []
-#     for survey in allsurveys:
-#         allquestions = Question.objects.all().filter(survey_id=survey.id)
-#         # for question in allquestions:
-#             # choices = Choice.objects.filter(question = question.id)
-#             # allquestions = Question.objects.select_related().filter(survey_id=survey.id)
-#         choices = Choice.objects.select_related().filter(question_id = allquestions[0].id)
-#         data_source = ModelDataSource(choices, fields=['choice_text',
-#         'votes'])
-#         chart = gchart.PieChart(data_source, options={'is3D': True,
-#             'pieSliceText': 'value', 'title': survey.survey_name})
-#         graphs.append(chart)
-#     return render(request, 'app/summary.html', {'graphs': graphs})
+def survey_summary(request, sid):
+    allquestions = Question.objects.all().filter(survey_id = sid)
+    graphs = []
+    survey_name = Survey.objects.get(pk=sid).survey_name
+    for question in allquestions:
+        choices = Choice.objects.filter(question = question.id)
+        data_source = ModelDataSource(choices, fields=['choice_text', 'votes'])
+        chart = gchart.PieChart(data_source,
+                options={'is3D': True,
+                'pieSliceText': 'value',
+                'title': question.question_text})
+        graphs.append(chart)
+    return render(request, 'app/survey_summary.html',
+            {   'graphs': graphs,
+                'survey_name': survey_name
+            })
