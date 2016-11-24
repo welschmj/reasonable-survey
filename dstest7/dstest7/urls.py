@@ -2,6 +2,9 @@
 Definition of urls for dstest7.
 """
 
+from django.views.generic.edit import CreateView
+from django.contrib.auth.forms import UserCreationForm
+
 from datetime import datetime
 from django.conf.urls import url
 import django.contrib.auth.views
@@ -26,6 +29,7 @@ urlpatterns = [
 
     url(r'^$', app.views.home, name='home'),
     url(r'^poll/$', app.views.home, name='home'),
+
     url(r'^contact$', app.views.contact, name='contact'),
     url(r'^about', app.views.about, name='about'),
     url(r'^login/$',
@@ -52,4 +56,11 @@ urlpatterns = [
 
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
+
+    # Registration URLs
+    url('^register/', CreateView.as_view(
+            template_name='app/register.html',
+            form_class=UserCreationForm,
+            success_url='/')),
+    # url('^accounts/', include('django.contrib.auth.urls')),
 ]
