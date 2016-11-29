@@ -3,7 +3,7 @@ Definition of views.
 """
 
 from django.shortcuts import render, get_object_or_404
-from django.http import HttpRequest
+from django.http import HttpRequest, HttpResponse
 from django.template import RequestContext
 from datetime import datetime
 from graphos.sources.model import ModelDataSource
@@ -115,3 +115,35 @@ def about(request):
             'year':datetime.now().year,
         }
     )
+
+def summary(request):
+    allsurveys = Survey.objects.all()
+    graphs = []
+    for survey in allsurveys:
+        allquestions = Question.objects.all().filter(survey_id=survey.id)
+        for question in allquestions:
+            choices = Choice.objects.filter(question = question.id)
+            data_source = ModelDataSource(choices, fields=['choice_text', 'votes'])
+            chart = gchart.PieChart(data_source,
+                    options={'is3D': True,
+                    'pieSliceText': 'value',
+                    'title': question.question_text})
+            graphs.append((chart, survey.survey_name))
+    return render(request, 'app/summary.html', {'graphs': graphs})
+
+def survey_summary(request, sid):
+    allquestions = Question.objects.all().filter(survey_id = sid)
+    graphs = []
+    survey_name = Survey.objects.get(pk=sid).survey_name
+    for question in allquestions:
+        choices = Choice.objects.filter(question = question.id)
+        data_source = ModelDataSource(choices, fields=['choice_text', 'votes'])
+        chart = gchart.PieChart(data_source,
+                options={'is3D': True,
+                'pieSliceText': 'value',
+                'title': question.question_text})
+        graphs.append(chart)
+    return render(request, 'app/survey_summary.html',
+            {   'graphs': graphs,
+                'survey_name': survey_name
+            })

@@ -32,6 +32,10 @@ urlpatterns = [
 
     url(r'^contact$', app.views.contact, name='contact'),
     url(r'^about', app.views.about, name='about'),
+    url(r'^summary', app.views.summary, name='summary'),
+
+    # ex: /summary/1
+    url(r'^summary/(?P<sid>[0-9]+)', app.views.survey_summary),
     url(r'^login/$',
         django.contrib.auth.views.login,
         {

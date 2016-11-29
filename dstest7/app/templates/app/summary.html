@@ -1,0 +1,21 @@
+{% extends "app/layout.html" %}
+
+{% block content %}
+
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript">
+    google.load("visualization", "1", {packages:["corechart"]});
+</script>
+
+<br />
+
+<div class="list-group">
+  {% for graph, survey_name in graphs %}
+    <div id="container">
+      <h3>{{ survey_name }}</h3>
+      {{ graph.as_html }}
+    </div>
+  {% endfor %}
+</div>
+
+{% endblock %}

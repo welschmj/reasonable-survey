@@ -245,8 +245,10 @@ ModelManifest.xml
 .fake/
 
 # Ignore pycache BS
-*.py[cod]
-
+*.pyc
 # Ignore Mac OS X system files
 
 *.DS_Store
+
+# ignore the database file
+*.sqlite3
