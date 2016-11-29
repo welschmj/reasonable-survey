@@ -1,0 +1,28 @@
+{% extends "app/layout.html" %}
+
+{% block content %}
+
+<h2>{{ title }}</h2>
+<div class="row">
+    <div class="col-md-8">
+        <section id="loginForm">
+            <form action="." method="post" class="form-horizontal">
+                {% csrf_token %}
+                <h4>Create an Account to login.</h4>
+                <hr />
+                {{ form }}
+                <input type="submit" value="Submit" />
+            </form>
+        </section>
+    </div>
+</div>
+
+{% endblock %}
+
+
+{% block scripts %}
+
+    {% load staticfiles %}
+<script src="{% static 'app/scripts/jquery.validate.min.js' %}"></script>
+
+{% endblock %}

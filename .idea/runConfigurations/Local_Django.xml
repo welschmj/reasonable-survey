@@ -3,15 +3,15 @@
     <option name="INTERPRETER_OPTIONS" value="" />
     <option name="PARENT_ENVS" value="true" />
     <envs>
-      <env name="PYTHONUNBUFFERED" value="1" />
       <env name="DJANGO_SETTINGS_MODULE" value="dstest7.settings" />
+      <env name="PYTHONUNBUFFERED" value="1" />
     </envs>
     <option name="SDK_HOME" value="/usr/bin/python2.7" />
     <option name="WORKING_DIRECTORY" value="" />
     <option name="IS_MODULE_SDK" value="false" />
     <option name="ADD_CONTENT_ROOTS" value="true" />
     <option name="ADD_SOURCE_ROOTS" value="true" />
-    <module name="dstest7" />
+    <module name="reasonable-survey" />
     <option name="launchJavascriptDebuger" value="false" />
     <option name="port" value="8000" />
     <option name="host" value="" />
