@@ -1,1 +1,2 @@
-django >=1.9, <2
+Django==1.10.1 <2
+django-graphos==0.3.7

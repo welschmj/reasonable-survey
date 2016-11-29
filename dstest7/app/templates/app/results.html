@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+
+</body>
+</html>{% extends "app/layout.html" %}
+
+{% block content %}
+
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript">
+    google.load("visualization", "1", {packages:["corechart"]});
+</script>
+
+<br />
+
+<h2>Your Responses to: {{ survey_name }}</h2>
+<div class="list-group">
+    {% if resp_list %}
+        {% for question, choice  in resp_list %}
+            <a href="#" class="list-group-item" >{{ question }}: {{ choice }}</a>
+        {% endfor %}
+    {% else %}
+        <a href="#" class="list-group-item" >No Responses Available</a>
+    {% endif %}
+</div>
+
+
+
+{% endblock %}

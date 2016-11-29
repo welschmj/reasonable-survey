@@ -22,11 +22,13 @@ class Choice(models.Model):
     next_qid = models.ForeignKey(Question, null = True, related_name="question_branch", on_delete=models.SET_NULL, blank=True)
     def __str__(self):
         return self.choice_text
+
 class Survey(models.Model):
     survey_name = models.TextField()
     first_qid = models.ForeignKey(Question,null = True,blank=True)
     def __str__(self):
         return self.survey_name
+
 class Response(models.Model):
     surveyid = models.TextField()
     qid = models.TextField()

@@ -3,7 +3,7 @@ cookie_date
 UpdateError
 import_module
 MiddlewareMixin
+SuspiciousOperation
 time
 SessionMiddleware
-redirect
 settings

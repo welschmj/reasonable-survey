@@ -32,9 +32,26 @@ def detail(request, question_id):
     return render(request, 'app/detail.html', {'question': question, 'chart':
         chart } )
 
-def results(request, question_id):
-    response = "You're looking at the results of question %s."
-    return HttpResponse(response % question_id)
+def results(request, survey_id):
+    assert isinstance(request, HttpRequest)
+    # get all responses from model
+    user_resp_list = Response.objects.filter(surveyid=survey_id, user=request.user.username)
+    survey_name = survey_id.survey_name
+
+    # store the questions and responses
+    responses = []
+    for chosen in user_resp_list:
+        question = Question.objects.get(pk=chosen.qid)
+        responses.append((question, chosen.res))
+    
+    # save in context
+    context = {
+            'survey_name':survey_name,
+            'resp_list':responses
+            }
+    
+    # render the new page
+    return render(request, 'app/results.html', context)
 
 def vote(request, question_id, ans_id):
     question = get_object_or_404(Question, pk=question_id)
@@ -56,7 +73,7 @@ def vote(request, question_id, ans_id):
     if next_q:
         return detail(request,next_q)
     else:
-        return home(request)
+        return results(request, question.survey_id)
 
 def home(request):
     """Renders the home page."""

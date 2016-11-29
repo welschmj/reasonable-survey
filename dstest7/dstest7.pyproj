@@ -4,8 +4,8 @@
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <Name>dstest7</Name>
     <RootNamespace>dstest7</RootNamespace>
-    <InterpreterId>{2af0f10d-7135-4994-9156-5d01c9c11b7e}</InterpreterId>
-    <InterpreterVersion>3.5</InterpreterVersion>
+    <InterpreterId>{7fa3f837-08f7-4297-bea0-4d36ba3c4cd4}</InterpreterId>
+    <InterpreterVersion>3.4</InterpreterVersion>
     <NameOfLastUsedPublishProfile>rsurvey - Web Deploy</NameOfLastUsedPublishProfile>
   </PropertyGroup>
   <PropertyGroup>
@@ -60,6 +60,7 @@
   <ItemGroup>
     <Content Include="app\templates\app\detail.html" />
     <Content Include="app\templates\app\index2.html" />
+    <Content Include="app\templates\app\results.html" />
     <Content Include="db.sqlite3" />
     <Content Include="requirements.txt" />
     <Content Include="app\static\app\content\bootstrap.css" />
@@ -100,7 +101,6 @@
   </ItemGroup>
   <ItemGroup>
     <InterpreterReference Include="{2af0f10d-7135-4994-9156-5d01c9c11b7e}\3.4" />
-    <InterpreterReference Include="{2af0f10d-7135-4994-9156-5d01c9c11b7e}\3.5" />
   </ItemGroup>
   <ItemGroup>
     <Interpreter Include="env2\">

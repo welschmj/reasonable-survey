@@ -1,9 +1,10 @@
+JSONEncoderForHTML
 BaseC3JS
 BarChart
 json
-PieChart
+SplineChart
 DonutChart
 BaseChart
 LineChart
 ColumnChart
-SplineChart
+PieChart
