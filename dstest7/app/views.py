@@ -35,7 +35,7 @@ def detail(request, question_id):
 def results(request, survey_id):
     assert isinstance(request, HttpRequest)
     # get all responses from model
-    user_resp_list = Response.objects.filter(surveyid=survey_id, user=request.user.username)
+    user_resp_list = Response.objects.filter(surveyid=survey_id.pk, user=request.user.username)
     survey_name = survey_id.survey_name
 
     # store the questions and responses
@@ -43,7 +43,7 @@ def results(request, survey_id):
     for chosen in user_resp_list:
         question = Question.objects.get(pk=chosen.qid)
         responses.append((question, chosen.res))
-    
+
     # save in context
     context = {
             'survey_name':survey_name,

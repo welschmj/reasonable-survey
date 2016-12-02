@@ -34,3 +34,6 @@ class Response(models.Model):
     qid = models.TextField()
     user = models.TextField()
     res = models.TextField()
+
+    class Meta:
+        unique_together = ('surveyid', 'user')
