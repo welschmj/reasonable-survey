@@ -58,7 +58,7 @@
     <Folder Include="dstest7\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="app\static\Dynamic_Survey-Logo-Black.png" />
+    <Content Include="app\static\app\Dynamic_Survey-Logo-Black.png" />
     <Content Include="app\templates\app\detail.html" />
     <Content Include="app\templates\app\index2.html" />
     <Content Include="app\templates\app\results.html" />

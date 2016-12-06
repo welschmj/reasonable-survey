@@ -19,8 +19,11 @@
 
 <br />
 
-<h2>Thank you for taking the {{ survey_name }} survey!</h2>
-<div class="list-group">
+<h2 align="center">Thank you for taking the {{ survey_name }} survey!</h2>
+<div class="row" align="center">
+
+    <div class="col-md-8 col-md-offset-2" align="center">
+<div class="list-group" align="center">
     {% if resp_list %}
         {% for question, choice in resp_list %}
             <li class="list-group-item" >{{ question }}: {{ choice }}</li>
@@ -29,6 +32,7 @@
         <a href="#" class="list-group-item" >No Responses Available</a>
     {% endif %}
 </div>
+        </div></div>
 
 
 

@@ -10,8 +10,8 @@
     <script src="{% static 'app/scripts/modernizr-2.6.2.js' %}"></script>
 </head>
 
-<body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+<body style="background-color:#78BE20;">
+    <div class="navbar navbar-inverse navbar-fixed-top" style="background-color:#003B49;">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -23,10 +23,13 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="{% url 'home' %}">Home</a></li>
                     <li><a href="{% url 'about' %}">About</a></li>
                     <li><a href="{% url 'contact' %}">Contact</a></li>
                     <li><a href="/register">Register</a></li>
+                    
+                    {% if user.is_staff %}
+                    <li><a href="/admin">Admin</a></li>
+                    {% endif %}
                 </ul>
                 {% include 'app/loginpartial.html' %}
             </div>
@@ -37,7 +40,7 @@
 {% block content %}{% endblock %}
         <hr/>
         <footer>
-            <p>&copy; {{ year }} - Team Reasonable Expectations</p>
+            <p align="center">&copy; {{ year }} - Team Reasonable Expectations</p>
         </footer>
     </div>
 

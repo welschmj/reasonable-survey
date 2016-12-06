@@ -9,16 +9,24 @@
 
 <br />
 
+<div class="row" align="center">
+
+    <div class="col-md-6 col-md-offset-3" align="center">
 <div class="panel panel-primary">
-  <div class="panel-heading">
+    
+  <div class="panel-heading" style="background-color:#003B49;">
     <h3 class="panel-title">{{ question.question_text }}</h3>
   </div>
   <div class="panel-body">
     {{ question.desc_text }}
   </div>
+        </div></div>
+
 </div>
 
+<div class="row" align="center">
 
+    <div class="col-md-6 col-md-offset-3" align="center">
 <h2>Choose a Response:</h2>
 <div class="list-group">
     {% if question.choice_set.all %}
@@ -29,8 +37,9 @@
             <a href="#" class="list-group-item" >No Responses Available</a>
     {% endif %}
 </div>
-
-<div id="container">
+        </div></div>
+</br</br>>
+<div id="container" align="center">
   {{ chart.as_html }}
 </div>
 {% endblock %}
