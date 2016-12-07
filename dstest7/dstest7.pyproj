@@ -61,6 +61,7 @@
     <Content Include="app\static\app\Dynamic_Survey-Logo-Black.png" />
     <Content Include="app\templates\app\detail.html" />
     <Content Include="app\templates\app\index2.html" />
+    <Content Include="app\templates\app\register.html" />
     <Content Include="app\templates\app\results.html" />
     <Content Include="db.sqlite3" />
     <Content Include="requirements.txt" />

@@ -1,28 +1,15 @@
-{% extends "app/layout.html" %}
+﻿<!DOCTYPE html>
 
-{% block content %}
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+{% extends "app/layout.html" %} {% block title %}Register
+{% endblock %} {% block content %}
 
-<h2>{{ title }}</h2>
-<div class="row">
-    <div class="col-md-8">
-        <section id="loginForm">
-            <form action="." method="post" class="form-horizontal">
-                {% csrf_token %}
-                <h4>Create an Account to login.</h4>
-                <hr />
-                {{ form }}
-                <input type="submit" value="Submit" />
-            </form>
-        </section>
-    </div>
-</div>
+   <h2>Registration</h2>
 
-{% endblock %}
+   <form action="/register/" method="post">
+       {% csrf_token %}
+     {{form.as_p}}   <input type="submit" value="Register" />
 
+   </form>
 
-{% block scripts %}
-
-    {% load staticfiles %}
-<script src="{% static 'app/scripts/jquery.validate.min.js' %}"></script>
-
-{% endblock %}
+ {% endblock %}
