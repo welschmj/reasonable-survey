@@ -28,6 +28,10 @@
                     <li><a href="/register">Register</a></li>
                     
                     {% if user.is_staff %}
+                    <li><a href="/summary">Results</a></li>
+                    {% endif %}
+
+                    {% if user.is_staff %}
                     <li><a href="/admin">Admin</a></li>
                     {% endif %}
                 </ul>
